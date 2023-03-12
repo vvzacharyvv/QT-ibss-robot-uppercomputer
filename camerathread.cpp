@@ -1,8 +1,11 @@
-﻿
+﻿#include<QDebug>
 #include "camerathread.h"
-
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
 CameraThread::CameraThread(QObject *parent):QThread(parent)
 {
+
 timer =new QTimer(this);
 }
 CameraThread::~CameraThread()
@@ -17,7 +20,7 @@ void CameraThread::run()
 
 //cap.open("rtsp://admin:password507@192.168.1.107:554/11");
 cap.open(m_url.toStdString());
-
+//splitframe(this->frame);
 while(flag==1)
 {
     img_update();
@@ -87,12 +90,33 @@ QImage CameraThread::img_process(const cv::Mat &frame)
 void CameraThread::img_update()
 {
     cap.read(frame);
-    img=img_process(frame);
-    emit sendimg(img);
+    splitframe(frame);
+    img1=img_process(frame1);
+
+    img2=img_process(frame2);
+
+    emit sendimg();
 
 }
 
 void CameraThread::geturl(QString url)
 {
     this->m_url=url;
+}
+
+void CameraThread::splitframe(cv::Mat frame)
+{
+//     Mat frame;
+//            cap >> frame;
+//            resize(frame, frame, Size(1280, 480));//set size of image
+//            Mat leftImage, rightImage;
+//            leftImage = frame(Rect(0, 0, frame.size().width / 2, frame.size().height));//split left image
+//            rightImage = Rect(frame.size().width / 2, 0, frame.size().width / 2, frame.size().height)//split right image
+//            imshow("leftImage", leftImage);//left image
+//            imshow("rightImage", rightImage);//right image
+//            waitKey(33);
+    cv::resize(frame, frame,cv::Size(1280, 400));
+   this->frame1=frame(cv::Rect(0, 0, frame.size().width / 2, frame.size().height));//left image;
+   this->frame2=frame(cv::Rect(frame.size().width / 2, 0, frame.size().width / 2, frame.size().height));
+
 }

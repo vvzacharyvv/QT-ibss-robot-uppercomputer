@@ -70,6 +70,8 @@ private slots:
 
     //void on_PBT_Open_clicked();
 
+    void on_btn_vsetZ_clicked();
+
 private:
     Ui::MainWindow *ui;
     //定时器

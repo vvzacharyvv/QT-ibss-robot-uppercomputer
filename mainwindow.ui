@@ -82,7 +82,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>速度</string>
+       <string>速度Y</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_vset">
@@ -101,8 +101,8 @@
      <widget class="QPushButton" name="btn_dset">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>180</y>
+        <x>290</x>
+        <y>40</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -115,20 +115,20 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>180</y>
+        <y>40</y>
         <width>54</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>data_buffer1</string>
+       <string>速度X</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="d_edit">
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>180</y>
+        <y>40</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -150,7 +150,7 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>23</x>
+        <x>40</x>
         <y>250</y>
         <width>81</width>
         <height>31</height>
@@ -186,14 +186,14 @@
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>13</x>
+        <x>50</x>
         <y>320</y>
-        <width>91</width>
+        <width>41</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>时间步态更新</string>
+       <string>周期</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="tgu_edit">
@@ -277,7 +277,7 @@
      <widget class="QPushButton" name="PBT_Open">
       <property name="geometry">
        <rect>
-        <x>550</x>
+        <x>430</x>
         <y>480</y>
         <width>71</width>
         <height>71</height>
@@ -296,10 +296,10 @@
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>100</y>
-        <width>481</width>
-        <height>271</height>
+        <x>630</x>
+        <y>0</y>
+        <width>640</width>
+        <height>400</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -312,10 +312,10 @@
      <widget class="QLabel" name="label_1">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>440</y>
-        <width>481</width>
-        <height>271</height>
+        <x>630</x>
+        <y>410</y>
+        <width>640</width>
+        <height>400</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -328,7 +328,7 @@
      <widget class="QPushButton" name="PBT_Close">
       <property name="geometry">
        <rect>
-        <x>550</x>
+        <x>430</x>
         <y>620</y>
         <width>71</width>
         <height>71</height>
@@ -365,6 +365,42 @@
       </property>
       <property name="text">
        <string>显示</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>160</y>
+        <width>54</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>速度Z</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="VZ_edit">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>160</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_vsetZ">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>160</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>设置</string>
       </property>
      </widget>
     </widget>

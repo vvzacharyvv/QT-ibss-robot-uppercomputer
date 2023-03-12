@@ -10,30 +10,30 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     CameraThread *thread1=new CameraThread(this);
-    CameraThread *thread2=new CameraThread(this);
+   // CameraThread *thread2=new CameraThread(this);
     //init url
-    thread1->geturl("http://192.168.50.245:8080/?action=stream?dummy=param.mjpg");
-    thread2->geturl("rtsp://admin:password507@192.168.1.105:554/11");
+    thread1->geturl("http://192.168.1.106:8080/?action=stream?dummy=param.mjpg");
+   // thread2->geturl("rtsp://admin:password507@192.168.1.105:554/11");
     //启动子线程
     connect(ui->PBT_Open,&QPushButton::clicked,this,[=](){
         thread1->flag=1;
         thread1->start();
-        thread2->flag=1;
-        thread2->start();
+        //thread2->flag=1;
+        //thread2->start();
     });
     //接受子线程的数据, 收到一张图更新一次画布
     connect(thread1,&CameraThread::sendimg,this,[=](){
-        ui->label_1->setPixmap(QPixmap::fromImage(thread1->img));
-        ui->label_2->setPixmap(QPixmap::fromImage(thread2->img));
+        ui->label_1->setPixmap(QPixmap::fromImage(thread1->img1));
+        ui->label_12->setPixmap(QPixmap::fromImage(thread1->img2));
     });
-    //关闭子线程
+    //关闭子线
     connect(ui->PBT_Close,&QPushButton::clicked,this,[=](){
         thread1->flag=0;
         thread1->exit();
         ui->label_1->clear();
-        thread2->flag=0;
-        thread2->exit();
-        ui->label_2->clear();
+//        thread2->flag=0;
+//        thread2->exit();
+        ui->label_12->clear();
     });
 
 
@@ -270,7 +270,7 @@ void MainWindow::on_btn_motion_clicked()
     QString str;
     QByteArray buff;
     if(motion_state==0)
-    { str="23020600000031aa";
+    { str="23020000000031aa";
                 buff=dd->convertStringToHex(str);
          //buff+="\r\n";
         motion_state=1;
@@ -287,7 +287,7 @@ void MainWindow::on_btn_motion_clicked()
 //        buff[2]='5';
 //        buff[3]='4';
          //buff+="\r\n";
-        str="23020600000030aa";
+        str="23020000000000aa";
                         buff=dd->convertStringToHex(str);
                 motion_state=0;
             ui->btn_motion->setIcon(QIcon(":/run.png"));
@@ -303,7 +303,7 @@ void MainWindow::on_btn_motion_clicked()
 
 
 
-void MainWindow::on_btn_vset_clicked()
+void MainWindow::on_btn_vset_clicked()//Y速度
 {
 
     QString str,str_set;
@@ -337,7 +337,7 @@ void MainWindow::on_btn_vset_clicked()
 
 }
 
-void MainWindow::on_btn_dset_clicked()
+void MainWindow::on_btn_dset_clicked()//X速度
 {
     QString str,str_set;
     QByteArray buff;
@@ -370,12 +370,12 @@ void MainWindow::on_btn_dset_clicked()
 
 }
 
-void MainWindow::on_btn_gmset_clicked()
+void MainWindow::on_btn_gmset_clicked()//步态模式
 {
     QString str,str_set;
     QByteArray buff;
 //    float fl;
-    str="230203";
+    str="230206";
     str+="000000";
     str_set=ui->gm_edit->text();
     str+=str_set;
@@ -406,7 +406,7 @@ void MainWindow::on_btn_gmset_clicked()
 }
 
 
-void MainWindow::on_btn_tguset_clicked()
+void MainWindow::on_btn_tguset_clicked()//周期
 {
     QString str,str_set;
     QByteArray buff;
@@ -438,7 +438,7 @@ void MainWindow::on_btn_tguset_clicked()
     serialport->write(buff);
 }
 
-void MainWindow::on_btn_pset_clicked()
+void MainWindow::on_btn_pset_clicked()//下压
 {
     QString str,str_set;
     QByteArray buff;
@@ -622,3 +622,34 @@ void MainWindow::on_btn_refresh_clicked()
 //        video_flag=0;
 //    }
 //}
+
+void MainWindow::on_btn_vsetZ_clicked()
+{
+    QString str,str_set;
+    QByteArray buff;
+
+    str="230203";
+    str_set=ui->VZ_edit->text();
+    m_fl=str_set.toFloat();
+    //qDebug()<<"fl="<<fl;
+    uint f_uint = *(uint*)&m_fl;
+    QString f_hex = QString("%1").arg(f_uint, 4, 16, QLatin1Char('0'));	// 4是生成字符串的长度
+   // qDebug() << f_hex;
+
+    QString temp;
+    temp.resize(8);
+    temp[0]=f_hex[6];
+    temp[1]=f_hex[7];
+    temp[2]=f_hex[4];
+    temp[3]=f_hex[5];
+    temp[4]=f_hex[2];
+    temp[5]=f_hex[3];
+    temp[6]=f_hex[0];
+    temp[7]=f_hex[1];
+    str+=temp;
+    qDebug()<<temp;
+    str+="aa";
+   // qDebug()<<"str="<<str;
+    buff=dd->convertStringToHex(str);
+    serialport->write(buff);
+}

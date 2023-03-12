@@ -12,22 +12,25 @@ class CameraThread : public QThread
 public:
    explicit  CameraThread(QObject *parent);
     ~CameraThread();
-    QImage img;
+    QImage img1;
+    QImage img2;
     void run() override;
     int flag=0;
     QImage img_process(const cv::Mat &frame);
     void geturl(QString url);
+    void splitframe(cv::Mat frame);
 private:
     cv::VideoCapture cap;
     cv::Mat frame;
+    cv::Mat frame1,frame2;
     QTimer *timer;
     QString m_url;
 
 private slots:
     void img_update();
 signals:
-    void sendimg(QImage img);
-
+    //void sendimg(QImage img);
+    void sendimg();
 };
 
 #endif // CAMERATHREAD_H
