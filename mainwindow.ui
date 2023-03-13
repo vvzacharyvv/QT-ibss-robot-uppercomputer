@@ -23,6 +23,9 @@
       <height>851</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
@@ -56,7 +59,7 @@
        </size>
       </property>
       <property name="flat">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="v_edit">
@@ -69,7 +72,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>3.0</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="label">
@@ -88,7 +91,7 @@
      <widget class="QPushButton" name="btn_vset">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>290</x>
         <y>100</y>
         <width>51</width>
         <height>31</height>
@@ -137,8 +140,8 @@
      <widget class="QPushButton" name="btn_gmset">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>250</y>
+        <x>290</x>
+        <y>220</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -150,8 +153,8 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>250</y>
+        <x>50</x>
+        <y>220</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -164,17 +167,20 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>250</y>
+        <y>220</y>
         <width>131</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="text">
+       <string>02</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_tguset">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>320</y>
+        <x>290</x>
+        <y>280</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -187,7 +193,7 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>320</y>
+        <y>280</y>
         <width>41</width>
         <height>31</height>
        </rect>
@@ -200,7 +206,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>320</y>
+        <y>280</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -209,8 +215,8 @@
      <widget class="QPushButton" name="btn_pset">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>390</y>
+        <x>290</x>
+        <y>340</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -223,7 +229,7 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>390</y>
+        <y>340</y>
         <width>54</width>
         <height>31</height>
        </rect>
@@ -236,7 +242,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>390</y>
+        <y>340</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -260,6 +266,15 @@
         <height>71</height>
        </size>
       </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QPushButton" name="btn_refresh">
       <property name="geometry">
@@ -273,11 +288,14 @@
       <property name="text">
        <string/>
       </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QPushButton" name="PBT_Open">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>450</x>
         <y>480</y>
         <width>71</width>
         <height>71</height>
@@ -291,6 +309,9 @@
         <width>71</width>
         <height>71</height>
        </size>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_12">
@@ -328,7 +349,7 @@
      <widget class="QPushButton" name="PBT_Close">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>450</x>
         <y>620</y>
         <width>71</width>
         <height>71</height>
@@ -342,6 +363,9 @@
         <width>71</width>
         <height>71</height>
        </size>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QTextEdit" name="textEdit_status">
@@ -357,7 +381,7 @@
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>50</x>
         <y>461</y>
         <width>54</width>
         <height>21</height>
@@ -401,6 +425,24 @@
       </property>
       <property name="text">
        <string>设置</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>10</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 12pt &quot;Adobe 宋体 Std L&quot;;
+border-color: rgb(0, 255, 0);
+color:rgb(255,0,0);</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>

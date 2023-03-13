@@ -20,9 +20,11 @@ void CameraThread::run()
 
 //cap.open("rtsp://admin:password507@192.168.1.107:554/11");
 cap.open(m_url.toStdString());
+
 //splitframe(this->frame);
 while(flag==1)
 {
+    m_Fps=cap.get(cv::CAP_PROP_FPS);
     img_update();
     this->msleep(30);
 }

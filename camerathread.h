@@ -19,6 +19,7 @@ public:
     QImage img_process(const cv::Mat &frame);
     void geturl(QString url);
     void splitframe(cv::Mat frame);
+     int m_Fps;
 private:
     cv::VideoCapture cap;
     cv::Mat frame;

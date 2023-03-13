@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     CameraThread *thread1=new CameraThread(this);
    // CameraThread *thread2=new CameraThread(this);
     //init url
-    thread1->geturl("http://192.168.1.106:8080/?action=stream?dummy=param.mjpg");
+    thread1->geturl("http://192.168.1.102:8080/?action=stream?dummy=param.mjpg");
    // thread2->geturl("rtsp://admin:password507@192.168.1.105:554/11");
     //启动子线程
     connect(ui->PBT_Open,&QPushButton::clicked,this,[=](){
@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(thread1,&CameraThread::sendimg,this,[=](){
         ui->label_1->setPixmap(QPixmap::fromImage(thread1->img1));
         ui->label_12->setPixmap(QPixmap::fromImage(thread1->img2));
+        ui->label_15->setText(QString::number(thread1->m_Fps));
     });
     //关闭子线
     connect(ui->PBT_Close,&QPushButton::clicked,this,[=](){
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
 //        thread2->flag=0;
 //        thread2->exit();
         ui->label_12->clear();
+        ui->label_15->clear();
     });
 
 
